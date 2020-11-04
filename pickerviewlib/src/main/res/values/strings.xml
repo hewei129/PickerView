@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pickerview_cancel">Cancel</string>
+    <string name="pickerview_submit">Confirm</string>
+
+    <string name="pickerview_year">year</string>
+    <string name="pickerview_month">month</string>
+    <string name="pickerview_day">day</string>
+    <string name="pickerview_hours">hour</string>
+    <string name="pickerview_minutes">miute</string>
+    <string name="pickerview_seconds">second</string>
+
+</resources>
