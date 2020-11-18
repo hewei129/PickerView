@@ -15,6 +15,8 @@ import com.hw.pickerviewlib.widget.wheelview.WheelView;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -333,11 +335,37 @@ public class WheelTime {
 
     public String getTime() {
         StringBuffer sb = new StringBuffer();
-        sb.append((wv_year.getCurrentItem() + startYear)).append("-")
-                .append((wv_month.getCurrentItem() + 1)).append("-")
-                .append((wv_day.getCurrentItem() + 1)).append(" ")
-                .append(wv_hours.getCurrentItem()).append(":")
-                .append(wv_mins.getCurrentItem());
+        switch (type){
+            case MONTH_DAY_HOUR_MIN:
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTimeInMillis(System.currentTimeMillis());
+                int year = calendar.get(Calendar.YEAR);
+                sb.append(year).append("-")
+                        .append((wv_month.getCurrentItem() + 1)).append("-")
+                        .append((wv_day.getCurrentItem() + 1))
+                        .append(" ")
+                        .append(wv_hours.getCurrentItem()).append(":")
+                        .append(wv_mins.getCurrentItem());
+
+                break;
+            case HOURS_MINS:
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                String now_string = formatter.format(new Date());
+                sb.append(now_string)
+                        .append(" ")
+                        .append(wv_hours.getCurrentItem()).append(":")
+                        .append(wv_mins.getCurrentItem());
+                break;
+            default:
+                sb.append((wv_year.getCurrentItem() + startYear)).append("-")
+                        .append((wv_month.getCurrentItem() + 1)).append("-")
+                        .append((wv_day.getCurrentItem() + 1)).append(" ")
+                        .append(wv_hours.getCurrentItem()).append(":")
+                        .append(wv_mins.getCurrentItem());
+                break;
+
+        }
+
         return sb.toString();
     }
 

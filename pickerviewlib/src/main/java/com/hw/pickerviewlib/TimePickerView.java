@@ -1,6 +1,7 @@
 package com.hw.pickerviewlib;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -72,7 +73,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
         int hours = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
         Calendar rangeCalendar = Calendar.getInstance();
-        setRange(rangeCalendar.get(Calendar.YEAR) - 100, rangeCalendar.get(Calendar.YEAR) + 100);
+        setRange(rangeCalendar.get(Calendar.YEAR) - 10, rangeCalendar.get(Calendar.YEAR) + 10);
         mWheelTime.setPicker(year, month, day, hours, minute);
     }
 
@@ -256,7 +257,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
 
                     Date date = WheelTime.dateFormat.parse(mWheelTime.getTime());
 
-//                    LogEx.E("date111===="+mWheelTime.getTime());
+                    Log.e("David","date111===="+mWheelTime.getTime());
                     if (null != getMaxDate()) {
                         if (date.after(getMaxDate()))
                             date = getMaxDate();
